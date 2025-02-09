@@ -18,7 +18,9 @@ st.title("Custom Crave Assistance")
 
 # Initialize session state for chat history and user input
 if "messages" not in st.session_state:
-    st.session_state["messages"] = []
+    st.session_state["messages"] = [
+        {"role": "system", "content": "You are an AI expert in Pakistani cuisine and meal planning. You specialize in keto, Mediterranean, vegan, vegetarian, and non-vegetarian meal plans. You help users with meal suggestions, ingredients, nutritional values, and weight management (gain, loss, maintain). Do not answer questions outside this niche."}
+    ]
 
 if "user_input" not in st.session_state:
     st.session_state["user_input"] = ""
@@ -58,6 +60,6 @@ for msg in st.session_state["messages"]:
 st.text_input(
     "Type your message:",
     key="user_input",
-    placeholder="Ask me anything...",
+    placeholder="Ask me anything about meal planning...",
     on_change=process_input
 )
